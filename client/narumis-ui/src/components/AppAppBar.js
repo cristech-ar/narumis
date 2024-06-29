@@ -12,9 +12,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
+import Stack from '@mui/material/Stack';
 
 const logoStyle = {
-  width: '140px',
+  width: '200px',
+  marginLeft: '8em',
   height: 'auto',
   cursor: 'pointer',
 };
@@ -70,8 +72,8 @@ function AppAppBar({ mode, toggleColorMode }) {
               borderColor: 'divider',
               boxShadow:
                 theme.palette.mode === 'light'
-                  ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
-                  : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
+                  ? `0 0 1px rgba(11, 191, 77, 0.1), 1px 1.5px 2px -1px rgba(11, 191, 77, 0.15), 4px 4px 12px -2.5px rgba(11, 191, 77, 0.15)`
+                  : '0 0 1px rgba(11, 191, 77, 0.7), 1px 1.5px 2px -1px rgba(11, 191, 77, 0.65), 4px 4px 12px -2.5px rgba(11, 191, 77, 0.65)',
             })}
           >
             <Box
@@ -84,54 +86,46 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}
             >
               <img
-                src={require(
-                  '../narumis.png')
-                }
+                src={require('../narumis.png')}
                 style={logoStyle}
-                alt="logo of sitemark"
+                alt="narumis"
               />
-              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <MenuItem
-                  onClick={() => scrollToSection('features')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexGrow: 1,
+                }}
+              >
+                <MenuItem onClick={() => scrollToSection('features')}>
                   <Typography variant="body2" color="text.primary">
                     Diseños
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('testimonials')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
+                <MenuItem onClick={() => scrollToSection('testimonials')}>
                   <Typography variant="body2" color="text.primary">
                     Pedidos
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('highlights')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
+                <MenuItem onClick={() => scrollToSection('highlights')}>
                   <Typography variant="body2" color="text.primary">
                     Envíos
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('pricing')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
+                <MenuItem onClick={() => scrollToSection('pricing')}>
                   <Typography variant="body2" color="text.primary">
                     Precios
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('faq')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
+                <MenuItem onClick={() => scrollToSection('faq')}>
                   <Typography variant="body2" color="text.primary">
                     Contacto
                   </Typography>
                 </MenuItem>
-              </Box>
+              </Stack>
             </Box>
             <Box
               sx={{
@@ -140,7 +134,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 alignItems: 'center',
               }}
             >
-              
+              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
@@ -150,7 +144,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 onClick={toggleDrawer(true)}
                 sx={{ minWidth: '30px', p: '4px' }}
               >
-                <MenuIcon />
+                <MenuIcon sx={{ color: '#ff914d' }} />
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
