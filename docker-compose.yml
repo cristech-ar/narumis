@@ -10,6 +10,8 @@ services:
       - 8080:8080
     networks: 
       - shared-network
+    links: 
+      - mongo
   reactapp:
     container_name: reactapp
     build: 
@@ -46,6 +48,9 @@ services:
       - 27017:27017
     networks: 
       - shared-network
+    volumes:
+      - ./mongod.conf:/etc/mongod.conf
+    command: ["mongod", "--config", "/etc/mongod.conf"]
   mongo-express:
     image: mongo-express
     restart: always
@@ -62,3 +67,4 @@ services:
       - mongo
 networks:
   shared-network:
+    driver: bridge
